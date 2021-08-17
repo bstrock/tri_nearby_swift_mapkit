@@ -67,5 +67,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>&quot;TRI Nearby uses your location to filter your search results based on TRI Sites in your area.&quot;</string>
 </dict>
 </plist>
