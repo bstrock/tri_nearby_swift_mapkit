@@ -20,7 +20,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var userLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
     let region = MKCoordinateRegion()
     
-    
     func addSearchRadiusOverlay(center: CLLocationCoordinate2D, radius: Int){
         let searchRadiusMeters:Double = Double(radius) * 1609.34
         let circle = MKCircle(center: center, radius: searchRadiusMeters)
@@ -38,6 +37,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
     // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
     
+    
+    //MKMapviewDelegate implementations
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         print("OVERLAY", overlay)
         var circleRenderer = MKCircleRenderer()
@@ -52,26 +53,28 @@ class ViewController: UIViewController, MKMapViewDelegate {
         return circleRenderer
     }
     
+    // MARK: VIEW DID LOAD FUNCTION
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-        
+        // default map configuration
         mapView.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 44.854, longitude: -93.47),
             span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
             )
         
+        // MARK:  Mapview config
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsBuildings = true
         
+        // MARK: locationManager config
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        
+        // MARK: intial map state query config
         let testQuery = Query(latitude: mapView.region.center.latitude,
                               longitude: mapView.region.center.longitude,
                               accessToken: ProcessInfo.processInfo.environment["ACCESS_TOKEN"]!,
@@ -80,17 +83,18 @@ class ViewController: UIViewController, MKMapViewDelegate {
                               carcinogen: nil,
                               sectors: nil)
         
+        // this adds the search radius to the map
         addSearchRadiusOverlay(center: mapView.centerCoordinate, radius: testQuery.radius)
         
+        // this adds the pins to the map
         fetchSitesJsonData(query: testQuery) { (incomingSites) in
-            // this is where we'll initialize the pins and shit
-            
+            // MARK: initialize pins from query results
             
             self.sites = incomingSites
             print ("RETURNED COUNT: \(self.sites.count)")
             for site in self.sites {
-                self.mapView.addAnnotation(SiteAnnotation(site: site))
-                self.mapView.register(SiteAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+                self.mapView.addAnnotation(SiteAnnotation(site: site))  // convert query result into annotation object
+                self.mapView.register(SiteAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)  // register annotation
             }
         }
         
@@ -98,6 +102,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
 }
 
 extension ViewController: CLLocationManagerDelegate {
+    
+    // implements user location checking
+    
     func locationManager(
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]
@@ -116,7 +123,3 @@ extension ViewController: CLLocationManagerDelegate {
     
    
     }
-
-
-
-
