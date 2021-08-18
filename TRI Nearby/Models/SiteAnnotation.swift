@@ -12,14 +12,10 @@ class SiteAnnotation: NSObject, MKAnnotation {
     
     // This property must be key-value observable, which the `@objc dynamic` attributes provide.
     @objc dynamic var coordinate: CLLocationCoordinate2D
-    
-    // Required if you set the annotation view's `canShowCallout` property to `true`
     var title: String?
-    
-    // This property defined by `MKAnnotation` is not required.
     var subtitle: String?
-    
     var site: TRISite
+    var identifier = "TRI Site"
     //
     init(site: TRISite){
 

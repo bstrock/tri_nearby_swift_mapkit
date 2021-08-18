@@ -9,9 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, MKMapViewDelegate {
-    
-    
+class ViewController: UIViewController {
     
     var sites = [TRISite]()
     var locationManager = CLLocationManager()
@@ -19,16 +17,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     // MARK: Properties
     var userLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
     let region = MKCoordinateRegion()
-    
-    func addSearchRadiusOverlay(center: CLLocationCoordinate2D, radius: Int){
-        let searchRadiusMeters:Double = Double(radius) * 1609.34
-        let circle = MKCircle(center: center, radius: searchRadiusMeters)
-        
-        mapView.addOverlay(circle)
-        
-    }
-    
-    
+
     // MARK: Actions
     @IBOutlet weak var ShowSiteList: UIButton!
     
@@ -39,19 +28,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     
     //MKMapviewDelegate implementations
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        print("OVERLAY", overlay)
-        var circleRenderer = MKCircleRenderer()
-        if let overlay = overlay as? MKCircle {
-            
-            circleRenderer = MKCircleRenderer(circle: overlay)
-            circleRenderer.strokeColor = .black
-            circleRenderer.lineWidth = 1.5
-            circleRenderer.alpha = 0.2
-            circleRenderer.fillColor = .gray
-        }
-        return circleRenderer
-    }
     
     // MARK: VIEW DID LOAD FUNCTION
     override func viewDidLoad() {
@@ -60,7 +36,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         // default map configuration
         mapView.region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 44.854, longitude: -93.47),
+            center: CLLocationCoordinate2D(latitude: 44.9778, longitude: -93.26),
             span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
             )
         
@@ -86,6 +62,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // this adds the search radius to the map
         addSearchRadiusOverlay(center: mapView.centerCoordinate, radius: testQuery.radius)
         
+        
         // this adds the pins to the map
         fetchSitesJsonData(query: testQuery) { (incomingSites) in
             // MARK: initialize pins from query results
@@ -101,17 +78,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
 }
 
+// VIEW CONTROLLER DELEGATE IMPLEMENTATION
 extension ViewController: CLLocationManagerDelegate {
-    
     // implements user location checking
     
     func locationManager(
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]
     ) {
-        
         if let location = locations.first {
-            
             userLocation = location.coordinate
             print(userLocation)
             // Handle location update
@@ -120,6 +95,40 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
            print("Failed to get users location.")
        }
-    
-   
     }
+
+extension ViewController: MKMapViewDelegate{
+    func mapView(
+        _ mapView: MKMapView,
+        rendererFor overlay: MKOverlay
+    ) -> MKOverlayRenderer {
+        // implements rendering of the search radius circle overlays
+        
+        var circleRenderer = MKCircleRenderer()
+        
+        if let overlay = overlay as? MKCircle {
+            circleRenderer = MKCircleRenderer(circle: overlay)
+            circleRenderer.strokeColor = .black
+            circleRenderer.lineWidth = 1.5
+            circleRenderer.alpha = 0.2
+            circleRenderer.fillColor = .gray
+        }
+        return circleRenderer
+    }
+    
+    private func mapView(_ mapView: MKMapView, annotationView view: SiteAnnotationView, calloutAccessoryControlTapped control: UIControl
+    ) {
+        print("CLICK?")
+        let vc = AnnotationDetailViewController(nibName: "AnnotationDetailViewController", bundle: nil)
+        //vc.annotation = view.annotation as! SiteAnnotation
+        //present(vc, animated: true, completion: nil)
+        
+    }
+    
+    func addSearchRadiusOverlay(center: CLLocationCoordinate2D, radius: Int){
+        // call this function to add a radius overlay to the map
+        let searchRadiusMeters:Double = Double(radius) * 1609.34
+        let circle = MKCircle(center: center, radius: searchRadiusMeters)
+        mapView.addOverlay(circle)
+    }
+}
