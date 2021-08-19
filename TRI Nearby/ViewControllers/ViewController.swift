@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func filterSites(_ sender: Any) {
-        print(self.sites)
+        
     }
     
     //MKMapviewDelegate implementations

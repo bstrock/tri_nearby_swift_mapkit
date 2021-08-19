@@ -9,10 +9,12 @@ import Foundation
 
 enum ReleaseTypesEnum: String, CaseIterable {
     static var stringArray: [String] {
-        return [self.AIR.rawValue, self.WATER.rawValue, self.LAND.rawValue]
+        return [self.ANY.rawValue, self.AIR.rawValue, self.WATER.rawValue, self.LAND.rawValue]
     }
     
-    case AIR = "Air",
+    case
+         ANY = "Any Release Type",
+         AIR = "Air",
          WATER = "Water",
          LAND = "Land"
     }

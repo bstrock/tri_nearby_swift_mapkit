@@ -66,7 +66,6 @@ private extension SiteAnnotationView {
         
         if site.releaseTypes[0] != nil {
             // the release type is known
-            print(site.releaseTypes.count)
             
             // check length of array- will be 1, 2, or 3
             switch site.releaseTypes.count {
@@ -96,7 +95,6 @@ private extension SiteAnnotationView {
                     } else if !site.releaseTypes.contains("WATER") {
                         glyphImage = UIImage(named: "air")
                         markerTintColor = .green
-                        print(site.name)
                         releaseTypeText = "Air, Land"
                     } else if !site.releaseTypes.contains("LAND") {
                         glyphImage = UIImage(named: "air")
