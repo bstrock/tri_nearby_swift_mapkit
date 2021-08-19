@@ -11,8 +11,8 @@ import Foundation
 // contains method to return url components from structure instance
 
 struct Query: Hashable, Codable {
-    let latitude: Double
-    let longitude: Double
+    var latitude: Double
+    var longitude: Double
     let accessToken: String
     let radius: Int
     let releaseType: String?

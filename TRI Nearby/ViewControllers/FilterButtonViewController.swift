@@ -12,6 +12,8 @@ class FilterButtonViewController: UIViewController {
     // this controller allows the user to select filters for the search
     
     // MARK: Declare Constants
+    
+    let mapViewController:ViewController = ViewController()
     let sectorsStringArray = SectorsEnum.stringArray
     let releaseTypesStringArray = ReleaseTypesEnum.stringArray
     
@@ -27,13 +29,36 @@ class FilterButtonViewController: UIViewController {
     @IBAction func applyFilters(_ sender: Any) {
         // captures input values
         // TODO: use this to build a query and update user view
+        
+        // capture radius
         let radius = Int(radiusSlider.value)
-        print(radius)
+        
+        // capture sector (if selected)
+        var sectors:[String]? = nil
         let sectorRow = filterSectorPickerView.selectedRow(inComponent: 0)
-        print(sectorsStringArray[sectorRow])
+        if sectorRow > 0 {
+            sectors = [sectorsStringArray[sectorRow]]  // embedded in array for future upgrade
+        }
+        
+        // capture release type (if selected)
+        var releaseType:String? = nil
         let releaseTypeRow = releaseTypeSectorPickerView.selectedRow(inComponent: 0)
-        print(releaseTypesStringArray[releaseTypeRow])
-        print(carcinogenSwitch.isOn)
+        if releaseTypeRow > 0 {
+            releaseType = releaseTypesStringArray[releaseTypeRow]
+        }
+        
+        let location = ViewController().locationManager.location?.coordinate
+        
+        let query = Query(latitude: location!.latitude,
+                          longitude: location!.longitude,
+                          accessToken: "",
+                          radius: radius,
+                          releaseType: releaseType,
+                          carcinogen: carcinogenSwitch.isOn,
+                          sectors: sectors)
+        
+        //dismiss(animated: true, completion: nil)
+        mapViewController.filterQuery(query: query)
         
     }
     @IBAction func clearFilters(_ sender: Any) {
@@ -50,7 +75,7 @@ class FilterButtonViewController: UIViewController {
     }
     
     @IBAction func radiusSliderValueChanged(_ sender: Any) {
-        let val = String(Int(radiusSlider.value.rounded()))
+        let val = String(Int(radiusSlider.value))
         radiusSliderValueLabel.text = "\(val) Miles"
     }
     
@@ -97,6 +122,7 @@ extension FilterButtonViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, forComponent component: Int) -> String? {
         var out:String? = ""
+        
         if pickerView.tag == 1 {
             return sectorsStringArray[row]
         } else if pickerView.tag == 2 {

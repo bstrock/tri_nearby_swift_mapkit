@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var locationManager = CLLocationManager()
     
     // MARK: Properties
-    var userLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var userLocation:CLLocationCoordinate2D? = CLLocationCoordinate2D()
     let region = MKCoordinateRegion()
 
     // MARK: Outlets
@@ -30,6 +30,14 @@ class ViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func filterSites(_ sender: Any) {
+        
+    }
+    
+    func filterQuery(query: Query) {
+        
+        print(query)
+        
+        
         
     }
     
@@ -57,8 +65,10 @@ class ViewController: UIViewController {
         
         // MARK: locationManager config
         locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+
         
         // MARK: intial map state query config
         let testQuery = Query(latitude: mapView.region.center.latitude,
@@ -96,11 +106,9 @@ extension ViewController: CLLocationManagerDelegate {
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]
     ) {
-        if let location = locations.first {
-            userLocation = location.coordinate
-            print(userLocation)
-            // Handle location update
-        }
+        print(userLocation)
+        userLocation = locations.first?.coordinate
+        print(userLocation)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
            print("Failed to get users location.")
