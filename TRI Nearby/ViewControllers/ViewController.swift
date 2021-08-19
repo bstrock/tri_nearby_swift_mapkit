@@ -8,6 +8,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Foundation
+import SwiftUI
 
 class ViewController: UIViewController {
     
@@ -18,14 +20,18 @@ class ViewController: UIViewController {
     var userLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
     let region = MKCoordinateRegion()
 
-    // MARK: Actions
-    @IBOutlet weak var ShowSiteList: UIButton!
-    
-    @IBOutlet weak var FilterSites: UIButton!
-    
     // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var ShowSiteList: UIButton!
     
+    @IBOutlet weak var filterSites: UIButton!
+    
+    @IBOutlet weak var filterSitesForm: UIView!
+    
+    // MARK: Actions
+    @IBAction func filterSites(_ sender: Any) {
+        print(self.sites)
+    }
     
     //MKMapviewDelegate implementations
     
@@ -34,13 +40,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // MARK: Configure filter button
+        let button = filterSites!
+        button.layer.cornerRadius = 8
+        
         // default map configuration
         mapView.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 44.9778, longitude: -93.26),
             span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
             )
         
-        // MARK:  Mapview config
+        // MARK:  MapView config
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsBuildings = true
@@ -97,7 +107,7 @@ extension ViewController: CLLocationManagerDelegate {
        }
     }
 
-extension ViewController: MKMapViewDelegate{
+extension ViewController: MKMapViewDelegate {
     func mapView(
         _ mapView: MKMapView,
         rendererFor overlay: MKOverlay

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDA7D34926CEA3AA003583DF /* SectorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7D34826CEA3AA003583DF /* SectorsEnum.swift */; };
+		DDA7D34B26CEB3E6003583DF /* releaseTypesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7D34A26CEB3E6003583DF /* releaseTypesEnum.swift */; };
 		DDBC019D26CAD6B300B6BDB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC019C26CAD6B300B6BDB3 /* AppDelegate.swift */; };
 		DDBC019F26CAD6B300B6BDB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC019E26CAD6B300B6BDB3 /* SceneDelegate.swift */; };
 		DDBC01A126CAD6B300B6BDB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC01A026CAD6B300B6BDB3 /* ViewController.swift */; };
@@ -21,9 +23,12 @@
 		DDBC01BD26CC077300B6BDB3 /* SiteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC01BC26CC077300B6BDB3 /* SiteAnnotation.swift */; };
 		DDBC01C026CC0ADC00B6BDB3 /* SiteAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC01BF26CC0ADC00B6BDB3 /* SiteAnnotationView.swift */; };
 		DDBC01C326CCB35B00B6BDB3 /* AnnotationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC01C226CCB35B00B6BDB3 /* AnnotationDetailViewController.swift */; };
+		DDBC01C826CD7C7900B6BDB3 /* FilterButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC01C726CD7C7900B6BDB3 /* FilterButtonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DDA7D34826CEA3AA003583DF /* SectorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorsEnum.swift; sourceTree = "<group>"; };
+		DDA7D34A26CEB3E6003583DF /* releaseTypesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = releaseTypesEnum.swift; sourceTree = "<group>"; };
 		DDBC019926CAD6B300B6BDB3 /* TRI Nearby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRI Nearby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDBC019C26CAD6B300B6BDB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDBC019E26CAD6B300B6BDB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +46,7 @@
 		DDBC01BF26CC0ADC00B6BDB3 /* SiteAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteAnnotationView.swift; sourceTree = "<group>"; };
 		DDBC01C126CC228800B6BDB3 /* ep.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ep.gpx; path = ../../../Desktop/ep.gpx; sourceTree = "<group>"; };
 		DDBC01C226CCB35B00B6BDB3 /* AnnotationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationDetailViewController.swift; sourceTree = "<group>"; };
+		DDBC01C726CD7C7900B6BDB3 /* FilterButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,8 @@
 		DDBC019026CAD6B200B6BDB3 = {
 			isa = PBXGroup;
 			children = (
+				DDA7D34A26CEB3E6003583DF /* releaseTypesEnum.swift */,
+				DDA7D34826CEA3AA003583DF /* SectorsEnum.swift */,
 				DDBC01C126CC228800B6BDB3 /* ep.gpx */,
 				DDBC019B26CAD6B300B6BDB3 /* TRI Nearby */,
 				DDBC019A26CAD6B300B6BDB3 /* Products */,
@@ -76,12 +84,11 @@
 		DDBC019B26CAD6B300B6BDB3 /* TRI Nearby */ = {
 			isa = PBXGroup;
 			children = (
+				DDBC01C426CD708100B6BDB3 /* ViewControllers */,
 				DDBC01BE26CC094B00B6BDB3 /* VIews */,
 				DDBC01B326CAF4DA00B6BDB3 /* Models */,
 				DDBC019C26CAD6B300B6BDB3 /* AppDelegate.swift */,
 				DDBC019E26CAD6B300B6BDB3 /* SceneDelegate.swift */,
-				DDBC01A026CAD6B300B6BDB3 /* ViewController.swift */,
-				DDBC01C226CCB35B00B6BDB3 /* AnnotationDetailViewController.swift */,
 				DDBC01A226CAD6B300B6BDB3 /* Main.storyboard */,
 				DDBC01A526CAD6B400B6BDB3 /* Assets.xcassets */,
 				DDBC01A726CAD6B400B6BDB3 /* LaunchScreen.storyboard */,
@@ -103,7 +110,6 @@
 			children = (
 				DDBC01B426CAF4E900B6BDB3 /* TRISite.swift */,
 				DDBC01B626CB087D00B6BDB3 /* Report.swift */,
-				DDBC01B826CB0D7700B6BDB3 /* FetchJsonData.swift */,
 				DDBC01BA26CB1C8B00B6BDB3 /* Query.swift */,
 				DDBC01BC26CC077300B6BDB3 /* SiteAnnotation.swift */,
 			);
@@ -113,9 +119,20 @@
 		DDBC01BE26CC094B00B6BDB3 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				DDBC01C226CCB35B00B6BDB3 /* AnnotationDetailViewController.swift */,
 				DDBC01BF26CC0ADC00B6BDB3 /* SiteAnnotationView.swift */,
 			);
 			path = VIews;
+			sourceTree = "<group>";
+		};
+		DDBC01C426CD708100B6BDB3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDBC01B826CB0D7700B6BDB3 /* FetchJsonData.swift */,
+				DDBC01A026CAD6B300B6BDB3 /* ViewController.swift */,
+				DDBC01C726CD7C7900B6BDB3 /* FilterButtonViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,13 +208,16 @@
 				DDBC01A126CAD6B300B6BDB3 /* ViewController.swift in Sources */,
 				DDBC01C026CC0ADC00B6BDB3 /* SiteAnnotationView.swift in Sources */,
 				DDBC01BB26CB1C8C00B6BDB3 /* Query.swift in Sources */,
+				DDBC01C826CD7C7900B6BDB3 /* FilterButtonViewController.swift in Sources */,
 				DDBC01B726CB087D00B6BDB3 /* Report.swift in Sources */,
 				DDBC019D26CAD6B300B6BDB3 /* AppDelegate.swift in Sources */,
 				DDBC01B526CAF4E900B6BDB3 /* TRISite.swift in Sources */,
 				DDBC01B926CB0D7700B6BDB3 /* FetchJsonData.swift in Sources */,
+				DDA7D34926CEA3AA003583DF /* SectorsEnum.swift in Sources */,
 				DDBC01C326CCB35B00B6BDB3 /* AnnotationDetailViewController.swift in Sources */,
 				DDBC019F26CAD6B300B6BDB3 /* SceneDelegate.swift in Sources */,
 				DDBC01BD26CC077300B6BDB3 /* SiteAnnotation.swift in Sources */,
+				DDA7D34B26CEB3E6003583DF /* releaseTypesEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
