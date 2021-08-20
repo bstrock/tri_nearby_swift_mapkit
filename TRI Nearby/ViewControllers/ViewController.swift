@@ -35,11 +35,16 @@ class ViewController: UIViewController {
     
     func filterQuery(query: Query) {
         
-        print(query)
+        fetchSitesJsonData(query: query) { (incomingSites) in
+            self.sites = incomingSites
+            print ("RETURNED COUNT: \(self.sites.count)")
+        }
         
-        
-        
-    }
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let mapVC =  mainStoryboard.instantiateViewController(withIdentifier: "mapView")
+        }
+    
     
     //MKMapviewDelegate implementations
     
@@ -71,6 +76,7 @@ class ViewController: UIViewController {
 
         
         // MARK: intial map state query config
+        
         let testQuery = Query(latitude: mapView.region.center.latitude,
                               longitude: mapView.region.center.longitude,
                               accessToken: ProcessInfo.processInfo.environment["ACCESS_TOKEN"]!,
@@ -81,7 +87,6 @@ class ViewController: UIViewController {
         
         // this adds the search radius to the map
         addSearchRadiusOverlay(center: mapView.centerCoordinate, radius: testQuery.radius)
-        
         
         // this adds the pins to the map
         fetchSitesJsonData(query: testQuery) { (incomingSites) in
@@ -106,9 +111,7 @@ extension ViewController: CLLocationManagerDelegate {
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]
     ) {
-        print(userLocation)
         userLocation = locations.first?.coordinate
-        print(userLocation)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
            print("Failed to get users location.")

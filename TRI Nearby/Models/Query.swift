@@ -17,7 +17,7 @@ struct Query: Hashable, Codable {
     let radius: Int
     let releaseType: String?
     let carcinogen: Bool?
-    let sectors: [String]?
+    let sectors: String?
     
     func getQueryItems() -> [URLQueryItem] {
         
@@ -44,7 +44,7 @@ struct Query: Hashable, Codable {
         }
         
         if let sectors = sectors {
-            optionals["sectors"] = sectors.description
+            optionals["sectors"] = sectors
         } else {
             optionals["sectors"] = nil
         }

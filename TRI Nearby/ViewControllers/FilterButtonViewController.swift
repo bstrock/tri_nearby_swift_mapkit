@@ -6,6 +6,7 @@
 //
 import UIKit
 import CoreLocation
+import MapKit
 
 class FilterButtonViewController: UIViewController {
     
@@ -31,13 +32,14 @@ class FilterButtonViewController: UIViewController {
         // TODO: use this to build a query and update user view
         
         // capture radius
+        
         let radius = Int(radiusSlider.value)
         
         // capture sector (if selected)
-        var sectors:[String]? = nil
+        var sectors:String? = ""
         let sectorRow = filterSectorPickerView.selectedRow(inComponent: 0)
         if sectorRow > 0 {
-            sectors = [sectorsStringArray[sectorRow]]  // embedded in array for future upgrade
+            sectors = sectorsStringArray[sectorRow]  // embedded in array for future upgrade
         }
         
         // capture release type (if selected)
@@ -47,20 +49,35 @@ class FilterButtonViewController: UIViewController {
             releaseType = releaseTypesStringArray[releaseTypeRow]
         }
         
-        let location = ViewController().locationManager.location?.coordinate
+//        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc =  mainStoryboard.instantiateViewController(withIdentifier: "mapView") as! ViewController
         
-        let query = Query(latitude: location!.latitude,
-                          longitude: location!.longitude,
-                          accessToken: "",
-                          radius: radius,
-                          releaseType: releaseType,
-                          carcinogen: carcinogenSwitch.isOn,
-                          sectors: sectors)
         
-        //dismiss(animated: true, completion: nil)
-        mapViewController.filterQuery(query: query)
+        if let vc = presentingViewController as? ViewController {
+            let location:CLLocationCoordinate2D = vc.locationManager.location!.coordinate
+            
+            let query = Query(latitude: location.latitude,
+                              longitude: location.longitude,
+                              accessToken: "",
+                              radius: radius,
+                              releaseType: releaseType,
+                              carcinogen: carcinogenSwitch.isOn,
+                              sectors: sectors)
+            
+            fetchSitesJsonData(query: query) { (incomingSites) in
+                print(incomingSites)
+                vc.mapView.removeAnnotations(vc.mapView.annotations)
+                for site in incomingSites {
+                    vc.mapView.addAnnotation(SiteAnnotation(site: site))  // convert query result into annotation object
+                    vc.mapView.register(SiteAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)  // register annotation
+                }
+            }
+            dismiss(animated: true)
         
+        
+        }
     }
+        
     @IBAction func clearFilters(_ sender: Any) {
         
         radiusSlider.setValue(5, animated: true)

@@ -20,7 +20,6 @@ func fetchSitesJsonData(
     component.path = "/query"
     let queryItems:[URLQueryItem] = query.getQueryItems()
     component.queryItems = queryItems
-    print(component.url)
     
     // storage object
     var sites:[TRISite] = []
