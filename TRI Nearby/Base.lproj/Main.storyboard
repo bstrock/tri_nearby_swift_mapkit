@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tKt-FR-LLJ">
-                                <rect key="frame" x="-2" y="-4" width="416" height="904"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tKt-FR-LLJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjB-1q-UOf">
                                 <rect key="frame" x="40" y="576" width="73" height="30"/>
@@ -43,6 +42,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N44-UM-Qny"/>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UHL-3e-ab3"/>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hN8-8F-7v9"/>
+                            <constraint firstAttribute="bottom" secondItem="tKt-FR-LLJ" secondAttribute="bottom" id="iPa-Uu-Dth"/>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="o5A-SR-XSb"/>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oW9-KJ-9Ub"/>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="p3m-x2-xI6"/>
+                            <constraint firstAttribute="bottom" secondItem="tKt-FR-LLJ" secondAttribute="bottom" id="xES-DU-2gl"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="FilterSites" destination="Frj-pl-nje" id="hpF-7l-ZzP"/>

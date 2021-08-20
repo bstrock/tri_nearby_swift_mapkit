@@ -16,6 +16,12 @@ class ViewController: UIViewController {
     var sites = [TRISite]()
     var locationManager = CLLocationManager()
     
+    var filterParams:[String: Any?] = ["radius": 5,
+                                      "sectors": 0,
+                                      "releaseType": 0,
+                                      "carcinogen": nil]
+
+    
     // MARK: Properties
     var userLocation:CLLocationCoordinate2D? = CLLocationCoordinate2D()
     let region = MKCoordinateRegion()
@@ -32,19 +38,6 @@ class ViewController: UIViewController {
     @IBAction func filterSites(_ sender: Any) {
         
     }
-    
-    func filterQuery(query: Query) {
-        
-        fetchSitesJsonData(query: query) { (incomingSites) in
-            self.sites = incomingSites
-            print ("RETURNED COUNT: \(self.sites.count)")
-        }
-        
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-
-        let mapVC =  mainStoryboard.instantiateViewController(withIdentifier: "mapView")
-        }
-    
     
     //MKMapviewDelegate implementations
     
@@ -73,11 +66,10 @@ class ViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-
         
         // MARK: intial map state query config
         
-        let testQuery = Query(latitude: mapView.region.center.latitude,
+        let initQuery = Query(latitude: mapView.region.center.latitude,
                               longitude: mapView.region.center.longitude,
                               accessToken: ProcessInfo.processInfo.environment["ACCESS_TOKEN"]!,
                               radius: 5,
@@ -86,20 +78,20 @@ class ViewController: UIViewController {
                               sectors: nil)
         
         // this adds the search radius to the map
-        addSearchRadiusOverlay(center: mapView.centerCoordinate, radius: testQuery.radius)
+        addSearchRadiusOverlay(center: mapView.centerCoordinate, radius: initQuery.radius)
         
         // this adds the pins to the map
-        fetchSitesJsonData(query: testQuery) { (incomingSites) in
+        fetchSitesJsonData(query: initQuery) { (incomingSites) in
             // MARK: initialize pins from query results
             
             self.sites = incomingSites
             print ("RETURNED COUNT: \(self.sites.count)")
+            
             for site in self.sites {
                 self.mapView.addAnnotation(SiteAnnotation(site: site))  // convert query result into annotation object
                 self.mapView.register(SiteAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)  // register annotation
             }
         }
-        
     }
 }
 
