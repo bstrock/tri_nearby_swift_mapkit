@@ -105,12 +105,14 @@ class FilterButtonViewController: UIViewController {
             // rect is the bounding box for the overlay, but we want it to be juuuuuust a little bit wider.
             // rect.width is a get-only method, and there is no setter.
             // thus, we're going to derive a new rectangle from the existing one.
-                
-            let size = MKMapSize(width: rect.width * 1.10, height: rect.height)  // 10% wider
-            let frame = MKMapRect(origin: rect.origin, size: size)  // a new rectangle with the same origin and the larger width
-            let region = MKCoordinateRegion(rect)  // the region object which matches the frame
-
+        
+            let scaledSize = MKMapSize(width: rect.size.width * 1.15, height: rect.size.height * 1.15)
+            let frame = MKMapRect(origin: rect.origin, size: scaledSize)  // a new rectangle with the same origin and the larger width
+            var region = MKCoordinateRegion(frame)  // the region object which matches the frame
+            region.center = location  // recenter the region
             vc.mapView.setRegion(region, animated: true)  // set the region
+                
+            vc.siteListButton.setTitle("Sites in Radius: \(incomingSites.count)", for: vc.siteListButton.state)
                 
             
             }

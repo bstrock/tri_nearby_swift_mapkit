@@ -14,6 +14,7 @@ import SwiftUI
 class ViewController: UIViewController {
     
     var sites = [TRISite]()
+    @IBOutlet weak var siteListButton: UIButton!
     var locationManager = CLLocationManager()
     
     var filterParams:[String: Any?] = ["radius": 5,
@@ -47,8 +48,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // MARK: Configure filter button
-        let button = filterSites!
-        button.layer.cornerRadius = 8
+
+        filterSites.layer.cornerRadius = 8
+        siteListButton.layer.cornerRadius = 8
         
         // default map configuration
         mapView.region = MKCoordinateRegion(
@@ -85,7 +87,7 @@ class ViewController: UIViewController {
             // MARK: initialize pins from query results
             
             self.sites = incomingSites
-            print ("RETURNED COUNT: \(self.sites.count)")
+            self.siteListButton.setTitle("Sites in Radius: \(self.sites.count)", for: self.siteListButton.state)
             
             for site in self.sites {
                 self.mapView.addAnnotation(SiteAnnotation(site: site))  // convert query result into annotation object
@@ -135,7 +137,6 @@ extension ViewController: MKMapViewDelegate {
         let vc = AnnotationDetailViewController(nibName: "AnnotationDetailViewController", bundle: nil)
         //vc.annotation = view.annotation as! SiteAnnotation
         //present(vc, animated: true, completion: nil)
-        
     }
     
     func addSearchRadiusOverlay(center: CLLocationCoordinate2D, radius: Int){

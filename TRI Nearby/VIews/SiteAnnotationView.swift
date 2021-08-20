@@ -29,6 +29,8 @@ final class SiteAnnotationView: MKMarkerAnnotationView {
 }
 
 private extension SiteAnnotationView {
+    
+    
     func addCalloutToMarkers(for annotation: MKAnnotation?) {
         guard let annotation = annotation as? SiteAnnotation else { return }
         

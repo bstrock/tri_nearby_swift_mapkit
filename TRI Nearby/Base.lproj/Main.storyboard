@@ -24,9 +24,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frj-pl-nje" userLabel="filterSitesButton">
-                                <rect key="frame" x="258" y="750" width="98" height="30"/>
+                                <rect key="frame" x="239" y="750" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Filter Sites"/>
                                 <connections>
@@ -35,22 +36,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUW-sQ-48k">
-                                <rect key="frame" x="40" y="750" width="112" height="30"/>
+                                <rect key="frame" x="40" y="750" width="161" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <size key="titleShadowOffset" width="-2" height="2"/>
                                 <state key="normal" title="Show Site List"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N44-UM-Qny"/>
-                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UHL-3e-ab3"/>
-                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hN8-8F-7v9"/>
-                            <constraint firstAttribute="bottom" secondItem="tKt-FR-LLJ" secondAttribute="bottom" id="iPa-Uu-Dth"/>
-                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="o5A-SR-XSb"/>
-                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oW9-KJ-9Ub"/>
-                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="p3m-x2-xI6"/>
-                            <constraint firstAttribute="bottom" secondItem="tKt-FR-LLJ" secondAttribute="bottom" id="xES-DU-2gl"/>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5VO-oa-8Bj"/>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ghf-CJ-lwK"/>
+                            <constraint firstAttribute="bottom" secondItem="tKt-FR-LLJ" secondAttribute="bottom" id="SuG-Z6-Qti"/>
+                            <constraint firstItem="tKt-FR-LLJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wc9-nA-fdd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -58,6 +58,7 @@
                         <outlet property="ShowSiteList" destination="gUW-sQ-48k" id="U8u-XA-B6i"/>
                         <outlet property="filterSites" destination="Frj-pl-nje" id="JA2-B6-sHJ"/>
                         <outlet property="mapView" destination="tKt-FR-LLJ" id="jNw-xu-zJR"/>
+                        <outlet property="siteListButton" destination="gUW-sQ-48k" id="Cea-He-2pZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -68,7 +69,7 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-590" y="-569"/>
+            <point key="canvasLocation" x="-591.304347826087" y="-569.19642857142856"/>
         </scene>
         <!--Filter Button View Controller-->
         <scene sceneID="mEw-SL-ciN">
