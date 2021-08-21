@@ -23,21 +23,22 @@
                                 <rect key="frame" x="40" y="576" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frj-pl-nje" userLabel="filterSitesButton">
-                                <rect key="frame" x="239" y="750" width="125" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frj-pl-nje" userLabel="filterSitesButton">
+                                <rect key="frame" x="221" y="746" width="173" height="39"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="173" id="lHe-jj-kEx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="Filter Sites"/>
+                                <state key="normal" title="Change Filter"/>
                                 <connections>
                                     <action selector="filterSites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MCv-DO-q0t"/>
                                     <segue destination="sSs-lG-qKP" kind="presentation" id="Q9T-nf-daw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUW-sQ-48k">
-                                <rect key="frame" x="40" y="750" width="161" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUW-sQ-48k">
+                                <rect key="frame" x="20" y="746" width="176" height="39"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <size key="titleShadowOffset" width="-2" height="2"/>
@@ -48,8 +49,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tKt-FR-LLJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5VO-oa-8Bj"/>
+                            <constraint firstItem="Frj-pl-nje" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="GTN-eV-7JQ"/>
                             <constraint firstItem="tKt-FR-LLJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ghf-CJ-lwK"/>
                             <constraint firstAttribute="bottom" secondItem="tKt-FR-LLJ" secondAttribute="bottom" id="SuG-Z6-Qti"/>
+                            <constraint firstItem="gUW-sQ-48k" firstAttribute="bottom" secondItem="Frj-pl-nje" secondAttribute="bottom" id="Wse-mi-ldQ"/>
+                            <constraint firstItem="Frj-pl-nje" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="702" id="icT-KN-z0a"/>
+                            <constraint firstItem="Frj-pl-nje" firstAttribute="leading" secondItem="gUW-sQ-48k" secondAttribute="trailing" constant="25" id="l4b-Cc-tCh"/>
+                            <constraint firstItem="gUW-sQ-48k" firstAttribute="top" secondItem="Frj-pl-nje" secondAttribute="top" id="mfr-9h-d7B"/>
+                            <constraint firstItem="gUW-sQ-48k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qHL-YU-UOF"/>
                             <constraint firstItem="tKt-FR-LLJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wc9-nA-fdd"/>
                         </constraints>
                     </view>
@@ -211,6 +218,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Site Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YED-J7-YG5">
+                                <rect key="frame" x="0.0" y="176" width="414" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hz-C0-9xq">
                                 <rect key="frame" x="102" y="345" width="206" height="29"/>
                                 <constraints>
@@ -232,15 +245,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boilerplate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwP-vS-79a">
                                 <rect key="frame" x="18" y="204" width="376" height="133"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMD-ED-8I8">
-                                <rect key="frame" x="63" y="556" width="281" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="R4N-cw-xWy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -314,9 +318,12 @@
                                     <action selector="closeAnnotationDetail:" destination="Xq4-97-gSa" eventType="touchUpInside" id="V96-3E-6Hx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Site Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YED-J7-YG5">
-                                <rect key="frame" x="0.0" y="176" width="414" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMD-ED-8I8">
+                                <rect key="frame" x="40" y="556" width="331" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="R4N-cw-xWy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

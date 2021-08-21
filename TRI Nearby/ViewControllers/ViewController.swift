@@ -87,7 +87,7 @@ class ViewController: UIViewController {
             // MARK: initialize pins from query results
             
             self.sites = incomingSites
-            self.siteListButton.setTitle("Sites in Radius: \(self.sites.count)", for: self.siteListButton.state)
+            self.siteListButton.setTitle("Sites in Filter: \(self.sites.count)", for: self.siteListButton.state)
             
             for site in self.sites {
                 self.mapView.addAnnotation(SiteAnnotation(site: site))  // convert query result into annotation object
