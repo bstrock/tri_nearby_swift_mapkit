@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var sites = [TRISite]()
     @IBOutlet weak var siteListButton: UIButton!
     var locationManager = CLLocationManager()
-    
+    var selectedAnnotation:SiteAnnotation?
     var filterParams:[String: Any?] = ["radius": 5,
                                       "sectors": 0,
                                       "releaseType": 0,
@@ -131,12 +131,15 @@ extension ViewController: MKMapViewDelegate {
         return circleRenderer
     }
     
-    private func mapView(_ mapView: MKMapView, annotationView view: SiteAnnotationView, calloutAccessoryControlTapped control: UIControl
-    ) {
-        print("CLICK?")
-        let vc = AnnotationDetailViewController(nibName: "AnnotationDetailViewController", bundle: nil)
-        //vc.annotation = view.annotation as! SiteAnnotation
-        //present(vc, animated: true, completion: nil)
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        selectedAnnotation = view.annotation as! SiteAnnotation
+        print(selectedAnnotation)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "annotationDetailViewController")
+        
+        self.present(vc, animated: true)
+        
     }
     
     func addSearchRadiusOverlay(center: CLLocationCoordinate2D, radius: Int){

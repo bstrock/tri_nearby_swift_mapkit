@@ -64,8 +64,6 @@
 		DDBC019026CAD6B200B6BDB3 = {
 			isa = PBXGroup;
 			children = (
-				DDA7D34A26CEB3E6003583DF /* releaseTypesEnum.swift */,
-				DDA7D34826CEA3AA003583DF /* SectorsEnum.swift */,
 				DDBC01C126CC228800B6BDB3 /* ep.gpx */,
 				DDBC019B26CAD6B300B6BDB3 /* TRI Nearby */,
 				DDBC019A26CAD6B300B6BDB3 /* Products */,
@@ -108,6 +106,8 @@
 		DDBC01B326CAF4DA00B6BDB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DDA7D34A26CEB3E6003583DF /* releaseTypesEnum.swift */,
+				DDA7D34826CEA3AA003583DF /* SectorsEnum.swift */,
 				DDBC01B426CAF4E900B6BDB3 /* TRISite.swift */,
 				DDBC01B626CB087D00B6BDB3 /* Report.swift */,
 				DDBC01BA26CB1C8B00B6BDB3 /* Query.swift */,
@@ -119,7 +119,6 @@
 		DDBC01BE26CC094B00B6BDB3 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
-				DDBC01C226CCB35B00B6BDB3 /* AnnotationDetailViewController.swift */,
 				DDBC01BF26CC0ADC00B6BDB3 /* SiteAnnotationView.swift */,
 			);
 			path = VIews;
@@ -129,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				DDBC01B826CB0D7700B6BDB3 /* FetchJsonData.swift */,
+				DDBC01C226CCB35B00B6BDB3 /* AnnotationDetailViewController.swift */,
 				DDBC01A026CAD6B300B6BDB3 /* ViewController.swift */,
 				DDBC01C726CD7C7900B6BDB3 /* FilterButtonViewController.swift */,
 			);

@@ -29,7 +29,7 @@ final class SiteAnnotationView: MKMarkerAnnotationView {
 }
 
 private extension SiteAnnotationView {
-    
+     
     
     func addCalloutToMarkers(for annotation: MKAnnotation?) {
         guard let annotation = annotation as? SiteAnnotation else { return }
@@ -40,7 +40,7 @@ private extension SiteAnnotationView {
     
         let info = UILabel()
         info.numberOfLines = 0
-        info.font = UIFont.preferredFont(forTextStyle: .caption1)
+        info.font = UIFont.preferredFont(forTextStyle: .subheadline)
         
         var releasesText:String = ""
         var carcinogenText:String = ""
@@ -60,6 +60,7 @@ private extension SiteAnnotationView {
         var releaseTypeText = ""
         
         info.text = "\(site.address), \(site.city), \(site.state) \(site.zip)\n\nIndustry Sector: \(site.sector)\n\(releasesText)\nReleases Carcinogens: \(carcinogenText)"
+        
         
         markerTintColor = .white
         // determine which marker icon to use and color to use

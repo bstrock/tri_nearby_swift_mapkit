@@ -38,3 +38,39 @@ func fetchSitesJsonData(
                 }
         }.resume()  // async functionality breaks without this
 }
+
+func postReportJsonData(
+    report: Report,
+    completion: @escaping (Report) -> Void
+) {
+    var component = URLComponents()
+    component.scheme = "http"
+    component.host = "0.0.0.0"
+    component.port = 8001
+    component.path = "/submit"
+    
+    let url = component.url!
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    do {
+        request.httpBody = try JSONSerialization.data(withJSONObject: report.jsonDictionary(), options: .prettyPrinted)
+    } catch {
+        print("NO!   YOU FAIL")
+    }
+    print(report.jsonDictionary())
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
+    URLSession.shared.dataTask(with: request) { data, response, error in
+        guard let data = data else { return } // checks data integrity; null responses from api fail here
+        let decoder = JSONDecoder()  // decodes the json
+        decoder.keyDecodingStrategy = .convertFromSnakeCase  // makes this_stuff into thisStuff
+        decoder.dateDecodingStrategy = .secondsSince1970  // unix timestamp decoder
+        let reportBack = try! decoder.decode(Report.self, from: data)  // attempt to decode json from api
+                    DispatchQueue.main.async {  // async dispatch happens here
+                        print(reportBack)
+                        completion(reportBack)  // returns closure containing sites to function call
+                }
+        }.resume()  // async functionality breaks without this
+    }
+
+
