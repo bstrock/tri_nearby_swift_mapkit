@@ -7,15 +7,15 @@
 
 import Foundation
 
+//just a basic enum
 enum ReleaseTypesEnum: String, CaseIterable {
     static var stringArray: [String] {
-        return [self.ANY.rawValue, self.AIR.rawValue, self.WATER.rawValue, self.LAND.rawValue]
+        [ANY.rawValue, AIR.rawValue, WATER.rawValue, LAND.rawValue]
     }
-    
     case
-         ANY = "Any Release Type",
-         AIR = "Air",
-         WATER = "Water",
-         LAND = "Land"
-    }
+            ANY = "Any Release Type",
+            AIR = "Air",
+            WATER = "Water",
+            LAND = "Land"
+}
 

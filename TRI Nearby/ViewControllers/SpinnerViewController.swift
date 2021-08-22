@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 
+
 class SpinnerViewController: UIViewController {
+    // makes a spinner
     var spinner = UIActivityIndicatorView(style: .large)
 
     override func loadView() {
+        // hashtag just spinner things
         view = UIView()
         view.backgroundColor = UIColor(white: 0, alpha: 0.6)
         spinner.color = .white

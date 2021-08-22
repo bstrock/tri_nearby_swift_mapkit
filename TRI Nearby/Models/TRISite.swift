@@ -24,8 +24,8 @@ struct TRISite: Hashable, Codable {
     let releaseTypes: [String?]
     let totalReleases: Double
     let reports: [Report?]
-    var coordinates: CLLocationCoordinate2D{
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    var coordinates: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
 

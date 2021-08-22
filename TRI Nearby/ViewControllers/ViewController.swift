@@ -12,35 +12,38 @@ import Foundation
 import SwiftUI
 
 class ViewController: UIViewController {
-    
-    var sites = [TRISite]()
-    @IBOutlet weak var siteListButton: UIButton!
-    var locationManager = CLLocationManager()
-    var selectedAnnotation:SiteAnnotation?
-    var filterParams:[String: Any?] = ["radius": 5,
-                                      "sectors": 0,
-                                      "releaseType": 0,
-                                      "carcinogen": nil]
 
-    
-    // MARK: Properties
-    var userLocation:CLLocationCoordinate2D? = CLLocationCoordinate2D()
+    // main view controller for map view, controls form report and filter query views
+    // ALL VIEWS RETURN TO HERE
+
+    // MARK:  Constants
+    var sites = [TRISite]()  // may refactor this out
+    var locationManager = CLLocationManager()  // manages user locations
+    var selectedAnnotation: SiteAnnotation?  // records selected annotation when user taps to submit report
+    var userLocation: CLLocationCoordinate2D? = CLLocationCoordinate2D()
     let region = MKCoordinateRegion()
 
+    // persistent state object to track state of user's filter selections
+    var filterParams: [String: Any?] = ["radius": 5,
+                                        "sectors": 0,
+                                        "releaseType": 0,
+                                        "carcinogen": nil]
+
     // MARK: Outlets
+    @IBOutlet weak var siteListButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var ShowSiteList: UIButton!
-    
     @IBOutlet weak var filterSites: UIButton!
-    
     @IBOutlet weak var filterSitesForm: UIView!
-    
+
     // MARK: Actions
     @IBAction func filterSites(_ sender: Any) {
-        
+        // TODO: disconnect from storyboard adn remove
     }
-    
+
     func createSpinnerView() {
+        // it's just a spinner
+
         let child = SpinnerViewController()
 
         // add the spinner view controller
@@ -57,66 +60,67 @@ class ViewController: UIViewController {
             child.removeFromParent()
         }
     }
-    
+
     //MKMapviewDelegate implementations
-    
+
     // MARK: VIEW DID LOAD FUNCTION
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        createSpinnerView()
+        createSpinnerView()  // show spinner while location is being accessed
+
         // MARK: locationManager config
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
+
         do {
+            // this is admittedly janky, but it takes ~2 seconds for the location request function to return a result
+            // without the sleep in place or better async response handling, the view doesn't assess user location
             sleep(2)
         }
-        // MARK: Configure filter button
-        
+
+        // USER LOCATION
         let latitude = (locationManager.location?.coordinate.latitude)!
         let longitude = (locationManager.location?.coordinate.longitude)!
-        
+
+        // MARK: Configure button styles
         filterSites.layer.cornerRadius = 8
         siteListButton.layer.cornerRadius = 8
-        
-        // default map configuration
-        mapView.region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
-            span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
-            )
-        
+
         // MARK:  MapView config
+        mapView.region = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
+        )
+
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsBuildings = true
-        
-        
-        print("PRE QUERY", locationManager.location?.coordinate)
 
-        
-        // MARK: intial map state query config
-        
-        let initQuery = Query(latitude: latitude,
-                              longitude: longitude,
-                              accessToken: ProcessInfo.processInfo.environment["ACCESS_TOKEN"]!,
-                              radius: 5,
-                              releaseType: nil,
-                              carcinogen: nil,
-                              sectors: nil)
-        
+        // MARK: initial map state query
+
+        let initQuery = Query(
+                latitude: latitude,
+                longitude: longitude,
+                accessToken: ProcessInfo.processInfo.environment["ACCESS_TOKEN"]!,
+                radius: 5,
+                releaseType: nil,
+                carcinogen: nil,
+                sectors: nil
+        )
+
         // this adds the search radius to the map
         addSearchRadiusOverlay(center: mapView.centerCoordinate, radius: initQuery.radius)
-        
+
         // this adds the pins to the map
         fetchSitesJsonData(query: initQuery) { (incomingSites) in
             // MARK: initialize pins from query results
-            
-            self.sites = incomingSites
+
+            self.sites = incomingSites  // TODO:  refactor this out
             self.siteListButton.setTitle("Sites in Filter: \(self.sites.count)", for: self.siteListButton.state)
-            
+
             for site in self.sites {
                 self.mapView.addAnnotation(SiteAnnotation(site: site))  // convert query result into annotation object
                 self.mapView.register(SiteAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)  // register annotation
@@ -128,30 +132,23 @@ class ViewController: UIViewController {
 // VIEW CONTROLLER DELEGATE IMPLEMENTATION
 extension ViewController: CLLocationManagerDelegate {
     // implements user location checking
-    
-    func locationManager(
-        _ manager: CLLocationManager,
-        didUpdateLocations locations: [CLLocation]
-    ) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations.first?.coordinate
-        
-        print(userLocation)
+        // TODO:  need to implement this function to get location, but it currently doesn't do anything
+        // TODO:  better async handling in this function would eliminate the need for the thread sleep in ViewDidLoad()
     }
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-           print("Failed to get users location.")
-       }
+        // THIS FUNC IS REQUIRED FOR didUpdateLocations TO WORK, DO NOT REMOVE
+        print("Failed to get users location.")
     }
+}
 
 extension ViewController: MKMapViewDelegate {
-    func mapView(
-        _ mapView: MKMapView,
-        rendererFor overlay: MKOverlay
-    ) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         // implements rendering of the search radius circle overlays
-        
         var circleRenderer = MKCircleRenderer()
-        
+
+        // circle style properties defined here
         if let overlay = overlay as? MKCircle {
             circleRenderer = MKCircleRenderer(circle: overlay)
             circleRenderer.strokeColor = .black
@@ -161,21 +158,21 @@ extension ViewController: MKMapViewDelegate {
         }
         return circleRenderer
     }
-    
+
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        // this implements the callout button tapped response
+        // TODO:  can expand this interaction to present a richer site view which then connects to the report form
         selectedAnnotation = view.annotation as! SiteAnnotation
-        print(selectedAnnotation)
-        
+
+        // get main storyboard, make an annnotation detail view from it, and present
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "annotationDetailViewController")
-        
-        self.present(vc, animated: true)
-        
+        present(vc, animated: true)
     }
-    
-    func addSearchRadiusOverlay(center: CLLocationCoordinate2D, radius: Int){
+
+    func addSearchRadiusOverlay(center: CLLocationCoordinate2D, radius: Int) {
         // call this function to add a radius overlay to the map
-        let searchRadiusMeters:Double = Double(radius) * 1609.34
+        let searchRadiusMeters: Double = Double(radius) * 1609.34
         let circle = MKCircle(center: center, radius: searchRadiusMeters)
         mapView.addOverlay(circle)
     }
