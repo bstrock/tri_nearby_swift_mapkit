@@ -14,9 +14,8 @@ func fetchSitesJsonData(
     
     // build the url from the query components and API path
     var component = URLComponents()
-    component.scheme = "http"
-    component.host = "0.0.0.0"
-    component.port = 8001
+    component.scheme = "https"
+    component.host = "tri-nearby-db.herokuapp.com"
     component.path = "/query"
     let queryItems:[URLQueryItem] = query.getQueryItems()
     component.queryItems = queryItems
@@ -44,9 +43,8 @@ func postReportJsonData(
     completion: @escaping (Report) -> Void
 ) {
     var component = URLComponents()
-    component.scheme = "http"
-    component.host = "0.0.0.0"
-    component.port = 8001
+    component.scheme = "https"
+    component.host = "tri-nearby-db.herokuapp.com"
     component.path = "/submit"
     
     let url = component.url!

@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TRI Nearby" type="AppleRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TRI Nearby" TARGET_NAME="TRI Nearby" CONFIG_NAME="Debug" SCHEME_NAME="TRI Nearby" IS_LOCATION_SIMULATION_ALLOWED="true" LOCATION_SCENARIO_ID="../../../../../Desktop/ep.gpx" LOCATION_SCENARIO_TYPE="0" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" RUN_TARGET_PROJECT_NAME="TRI Nearby" RUN_TARGET_NAME="TRI Nearby" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
+    <envs>
+      <env name="ACCESS_TOKEN" value="c103ebd12a85bf972d2ad36cc48e75bfdde6dd0838a2feb133e301504391796f" />
+    </envs>
+    <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+      <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+    </EXTENSION>
+    <embedded_app_extension_list />
+    <method v="2">
+      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+    </method>
+  </configuration>
+</component>

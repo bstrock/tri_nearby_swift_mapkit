@@ -99,7 +99,7 @@ class AnnotationDetailViewController: UIViewController {
         postReportJsonData(report: report) { (response) in
             
             let alertMessage = "Thank you for submitting your Site Report! \n Your \(reportType) Report about \(self.secondarySelection!) at \(self.annotation.site.name) is Report # \(response.reportId!) submitted to TRI Nearby!"
-            let ac = UIAlertController(title: "CLICK", message: alertMessage, preferredStyle: .alert)
+            let ac = UIAlertController(title: "Report Submission Confirmed", message: alertMessage, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in self.whenDone()}))
             self.present(ac, animated: true, completion: nil)
         }

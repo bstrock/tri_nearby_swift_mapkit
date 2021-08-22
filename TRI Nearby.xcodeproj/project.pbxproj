@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DDA7D34926CEA3AA003583DF /* SectorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7D34826CEA3AA003583DF /* SectorsEnum.swift */; };
 		DDA7D34B26CEB3E6003583DF /* releaseTypesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7D34A26CEB3E6003583DF /* releaseTypesEnum.swift */; };
+		DDA7D34D26D18752003583DF /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7D34C26D18752003583DF /* SpinnerViewController.swift */; };
 		DDBC019D26CAD6B300B6BDB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC019C26CAD6B300B6BDB3 /* AppDelegate.swift */; };
 		DDBC019F26CAD6B300B6BDB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC019E26CAD6B300B6BDB3 /* SceneDelegate.swift */; };
 		DDBC01A126CAD6B300B6BDB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC01A026CAD6B300B6BDB3 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		DDA7D34826CEA3AA003583DF /* SectorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorsEnum.swift; sourceTree = "<group>"; };
 		DDA7D34A26CEB3E6003583DF /* releaseTypesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = releaseTypesEnum.swift; sourceTree = "<group>"; };
+		DDA7D34C26D18752003583DF /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		DDBC019926CAD6B300B6BDB3 /* TRI Nearby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRI Nearby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDBC019C26CAD6B300B6BDB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDBC019E26CAD6B300B6BDB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				DDBC01C226CCB35B00B6BDB3 /* AnnotationDetailViewController.swift */,
 				DDBC01A026CAD6B300B6BDB3 /* ViewController.swift */,
 				DDBC01C726CD7C7900B6BDB3 /* FilterButtonViewController.swift */,
+				DDA7D34C26D18752003583DF /* SpinnerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				DDBC01C326CCB35B00B6BDB3 /* AnnotationDetailViewController.swift in Sources */,
 				DDBC019F26CAD6B300B6BDB3 /* SceneDelegate.swift in Sources */,
 				DDBC01BD26CC077300B6BDB3 /* SiteAnnotation.swift in Sources */,
+				DDA7D34D26D18752003583DF /* SpinnerViewController.swift in Sources */,
 				DDA7D34B26CEB3E6003583DF /* releaseTypesEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +369,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N4RH5C8F7Y;
 				INFOPLIST_FILE = "TRI Nearby/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -383,6 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N4RH5C8F7Y;
 				INFOPLIST_FILE = "TRI Nearby/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

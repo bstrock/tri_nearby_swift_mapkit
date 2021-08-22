@@ -112,7 +112,7 @@ class FilterButtonViewController: UIViewController {
             region.center = location  // recenter the region
             vc.mapView.setRegion(region, animated: true)  // set the region
                 
-            vc.siteListButton.setTitle("Sites in Radius: \(incomingSites.count)", for: vc.siteListButton.state)
+            vc.siteListButton.setTitle("Sites in Filter: \(incomingSites.count)", for: vc.siteListButton.state)
                 
             
             }

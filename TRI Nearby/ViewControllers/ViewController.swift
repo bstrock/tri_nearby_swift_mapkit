@@ -40,21 +40,51 @@ class ViewController: UIViewController {
         
     }
     
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+    }
+    
     //MKMapviewDelegate implementations
     
     // MARK: VIEW DID LOAD FUNCTION
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        createSpinnerView()
+        // MARK: locationManager config
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         
+        do {
+            sleep(2)
+        }
         // MARK: Configure filter button
-
+        
+        let latitude = (locationManager.location?.coordinate.latitude)!
+        let longitude = (locationManager.location?.coordinate.longitude)!
+        
         filterSites.layer.cornerRadius = 8
         siteListButton.layer.cornerRadius = 8
         
         // default map configuration
         mapView.region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 44.9778, longitude: -93.26),
+            center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
             span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
             )
         
@@ -63,16 +93,14 @@ class ViewController: UIViewController {
         mapView.showsUserLocation = true
         mapView.showsBuildings = true
         
-        // MARK: locationManager config
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        
+        print("PRE QUERY", locationManager.location?.coordinate)
+
         
         // MARK: intial map state query config
         
-        let initQuery = Query(latitude: mapView.region.center.latitude,
-                              longitude: mapView.region.center.longitude,
+        let initQuery = Query(latitude: latitude,
+                              longitude: longitude,
                               accessToken: ProcessInfo.processInfo.environment["ACCESS_TOKEN"]!,
                               radius: 5,
                               releaseType: nil,
@@ -106,7 +134,10 @@ extension ViewController: CLLocationManagerDelegate {
         didUpdateLocations locations: [CLLocation]
     ) {
         userLocation = locations.first?.coordinate
+        
+        print(userLocation)
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
            print("Failed to get users location.")
        }

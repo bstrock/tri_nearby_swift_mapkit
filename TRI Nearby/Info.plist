@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>TRI Nearby</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -25,6 +27,14 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>"TRI Nearby uses your location to filter your search results based on TRI Sites in your area."</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>"TRI Nearby uses your location to filter your search results based on TRI Sites in your area."</string>
+	<key>NSLocationUsageDescription</key>
+	<string>"TRI Nearby uses your location to filter your search results based on TRI Sites in your area."</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>"TRI Nearby uses your location to filter your search results based on TRI Sites in your area."</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -67,7 +77,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;TRI Nearby uses your location to filter your search results based on TRI Sites in your area.&quot;</string>
 </dict>
 </plist>
