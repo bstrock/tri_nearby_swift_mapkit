@@ -1,9 +1,11 @@
-<h1>TRI Nearby:  API</h1>
+<h1>TRI Nearby:  Swift App</h1>
 This repo is for the frontend component of my final project for Geospatial Web and Mobile Programming.  This iOS app presents the user with map pins identifying TRI Sites in their direct vicinity.  It allows users to adjust the search radius beyond the inital 5 miles, as well as filter sites by industry sector, release type, and site carcinogen status.  Finally, users can submit activity reports for individual sites as a way to crowdsource potential data corrections.
 
 <h2>Link to project demo</h2>
 
 [View a 5 minute overview walkthrough here](https://youtu.be/jYbpUzD-KjI)
+
+[Check out the backend app repo here](https://github.com/bstrock/tri_nearby_python_fastapi)
 
 <h2>Tech Stack</h2>
 
