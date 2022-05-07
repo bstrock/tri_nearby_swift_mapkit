@@ -39,27 +39,27 @@ This repo is for the frontend component of my final project for Geospatial Web a
 
 ```
 TRI Nearby/
-      ├── /Assets.xcassets
-      |   └── ...(xcode assets)
-      ├── /Base.lproj
-      |     ├── LaunchScreen.storyboard
-      |     └── Main.storyboard
-      ├── /Models
-      |     ├── Query.swift
-      |     ├── Report.swift
-      |     ├── SectorsEnum.swift
-      |     ├── SiteAnnotations.swift
-      |     ├── TRISite.swift
-      |     └── releaseTypeEnum.swift
-      ├── /Views
-      |     └── SiteAnnotationView.swift
-      ├── /ViewControllers
-      |     ├── AnnotationDetailViewController.swift
-      |     ├── FetchJsonData.swift
-      |     ├── FilterButtonViewController.swift
-      |     ├── SpinnerViewController.swift
-      |     └── ViewController.swift
-      ├── AppDelegate.swift
-      ├── Info.plist
-      └── SceneDelegate.swift
+├── /Assets.xcassets
+|   └── ...(xcode assets)
+├── /Base.lproj
+|     ├── LaunchScreen.storyboard
+|     └── Main.storyboard
+├── /Models
+|     ├── Query.swift
+|     ├── Report.swift
+|     ├── SectorsEnum.swift
+|     ├── SiteAnnotations.swift
+|     ├── TRISite.swift
+|     └── releaseTypeEnum.swift
+├── /Views
+|     └── SiteAnnotationView.swift
+├── /ViewControllers
+|     ├── AnnotationDetailViewController.swift
+|     ├── FetchJsonData.swift
+|     ├── FilterButtonViewController.swift
+|     ├── SpinnerViewController.swift
+|     └── ViewController.swift
+├── AppDelegate.swift
+├── Info.plist
+└── SceneDelegate.swift
 ```
