@@ -7,18 +7,19 @@ This repo is for the frontend component of my final project for Geospatial Web a
 
 [Check out the backend app repo here](https://github.com/bstrock/tri_nearby_python_fastapi)
 
-<h2>Tech Stack</h2>
-
-* Swift 5
-* UIKit
-* MapKit
-* Made with Storyboard layout
-
 <h2>Screenshots</h2>
 
 <img src="https://github.com/bstrock/tri_nearby_swift_mapkit/blob/main/tri-screenshot-1.png" width="18%"></img> 
 <img src="https://github.com/bstrock/tri_nearby_swift_mapkit/blob/main/tri-screenshot-2.png" width="18%"></img>
 <img src="https://github.com/bstrock/tri_nearby_swift_mapkit/blob/main/tri-screenshot-3.png" width="18%"></img>
+
+<h2>Tech Stack</h2>
+
+* Swift 5
+* UIKit
+* MapKit
+* Xcode
+* Made with Storyboard layout
 
 <h2>Project Features</h2>
 
