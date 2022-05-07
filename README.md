@@ -37,7 +37,7 @@ This repo is for the frontend component of my final project for Geospatial Web a
 
 <h2>Project Structure</h2>
 
-TRI Nearby/
+```TRI Nearby/
       ├── /Assets.xcassets
       |   └── ...(xcode assets)
       ├── /Base.lproj
@@ -60,4 +60,5 @@ TRI Nearby/
       |     └── ViewController.swift
       ├── AppDelegate.swift
       ├── Info.plist
-      └── SceneDelegate.switft
+      └── SceneDelegate.swift
+```
