@@ -33,3 +33,30 @@ This repo is for the frontend component of my final project for Geospatial Web a
 * Callout for each site allows user to submit site report based on activity characteristics using preconfigured attribute selections
 * User report selections are translated into HTTP query strings, which the API uses to generate report table entries
 * Joined inheritance structure utilized in database allows for minimalistic implementation
+
+<h2>Project Structure</h2>
+
+TRI Nearby/
+      ├── /Assets.xcassets
+      |   └── ...(xcode assets)
+      ├── /Base.lproj
+      |     ├── LaunchScreen.storyboard
+      |     └── Main.storyboard
+      ├── /Models
+      |     ├── Query.swift
+      |     ├── Report.swift
+      |     ├── SectorsEnum.swift
+      |     ├── SiteAnnotations.swift
+      |     ├── TRISite.swift
+      |     └── releaseTypeEnum.swift
+      ├── /Views
+      |     └── SiteAnnotationView.swift
+      ├── /ViewControllers
+      |     ├── AnnotationDetailViewController.swift
+      |     ├── FetchJsonData.swift
+      |     ├── FilterButtonViewController.swift
+      |     ├── SpinnerViewController.swift
+      |     └── ViewController.swift
+      ├── AppDelegate.swift
+      ├── Info.plist
+      └── SceneDelegate.switft
