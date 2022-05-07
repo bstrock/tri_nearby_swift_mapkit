@@ -14,6 +14,12 @@ This repo is for the frontend component of my final project for Geospatial Web a
 * MapKit
 * Made with Storyboard layout
 
+<h2>Screenshots</h2>
+
+<img src="https://github.com/bstrock/tri_nearby_swift_mapkit/blob/main/tri-screenshot-1.png" width="18%"></img> 
+<img src="https://github.com/bstrock/tri_nearby_swift_mapkit/blob/main/tri-screenshot-2.png" width="18%"></img>
+<img src="https://github.com/bstrock/tri_nearby_swift_mapkit/blob/main/tri-screenshot-3.png" width="18%"></img>
+
 <h2>Project Features</h2>
 
 * iOS app built on MapKit provides an elegant basemap and intuitive interface
